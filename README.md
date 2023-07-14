@@ -1,6 +1,4 @@
-# Factual_ClinicalSumm
-
-Aligning Factual Consistency for Clinical Studies Summarization through Reinforcement Learning
+# Aligning Factual Consistency for Clinical Studies Summarization through Reinforcement Learning
 
 
 # Metrics
