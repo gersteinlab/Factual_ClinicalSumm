@@ -168,12 +168,42 @@ see FactCC, Github repository: [FactCC](https://github.com/nargesam/factCC/tree/
 
 ## SummaC
 Github repository: [SummaC](https://github.com/tingofurro/summac/)
+
 Usage:
-1. Run `pip install summac`.
+1. Install SummaC by running `pip install summac`.
 
-2. Store the `document` and `summary` as lists, with each element
+2. Import the necessary modules and create instances of the SummaC models:
+
+```python
+from summac.model_summac import SummaCZS, SummaCConv
+
+model_zs = SummaCZS(granularity="sentence", model_name="vitc", device="cpu") # If you have a GPU: switch to: device="cuda"
+model_conv = SummaCConv(models=["vitc"], bins='percentile', granularity="sentence", nli_labels="e", device="cpu", start_file="default", agg="mean")
+```
+
+3. Prepare your document and summary as strings and pass them to the `score` method of the respective model:
+
+```python
+document = """Scientists are studying Mars to learn about the Red Planet and find landing sites for future missions.
+One possible site, known as Arcadia Planitia, is covered in strange sinuous features.
+The shapes could be signs that the area is actually made of glaciers, which are large masses of slow-moving ice.
+Arcadia Planitia is in Mars' northern lowlands."""
+
+summary1 = "There are strange shape patterns on Arcadia Planitia. The shapes could indicate the area might be made of glaciers. This makes Arcadia Planitia ideal for future missions."
+
+score_zs1 = model_zs.score([document], [summary1])
+score_conv1 = model_conv.score([document], [summary1])
+
+print("[Summary 1] SummaCZS Score: %.3f; SummacConv score: %.3f" % (score_zs1["scores"][0], score_conv1["scores"][0]))
+```
+
+This will output the scores for the provided summary using the SummaCZS and SummaCConv models respectively.
 
 
+
+I hope this helps! Let me know if you have any further questions.
+
+# Citation
 
 ```
 @inproceedings{tang-etal-2023-aligning,
