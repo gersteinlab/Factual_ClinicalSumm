@@ -199,7 +199,7 @@ This will output the scores for the provided summary using the SummaCZS and Summ
 
 
 
-I hope this helps! Let me know if you have any further questions.
+I hope this helps! Let me know if you have any further questions. @xiangru.tang@yale.edu
 
 # Citation
 
